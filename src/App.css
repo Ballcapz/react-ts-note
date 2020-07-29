@@ -1,3 +1,29 @@
+.note {
+  width: 450px;
+  height: 550px;
+  border: 2px solid salmon;
+  border-radius: 5px;
+  text-align: left;
+  padding: 1rem;
+}
+
+.submit {
+  margin-top: 1rem;
+  width: 85px;
+  height: 35px;
+  background-color: salmon;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2px;
+}
+
+.submit:hover {
+  background-color: palevioletred;
+}
+
+
+
+
 .App {
   text-align: center;
 }

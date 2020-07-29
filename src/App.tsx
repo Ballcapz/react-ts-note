@@ -1,23 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
-function App() {
+type AppProps = { note: string };
+
+function App({ note }: AppProps) {
+
+  const saveNote = () => {
+    let valEl = document.querySelector('.note');
+    if (valEl !== null) {
+      let val = valEl.textContent;
+      console.log(val);
+      fetch(`TEST_URL`, {
+        method: 'POST',
+        body: JSON.stringify(val)
+      }).then(function (response) {
+        return response.json();
+      }).then(() => {
+        alert('Successfully saved note');
+      });
+    }
+  }
+
+  useEffect(
+    () => {
+      let noteEl = document.querySelector('.note')
+      if (noteEl !== null) {
+        noteEl.textContent = note;
+      }
+    }
+  )
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <div className="note" contentEditable="true">
+
+        </div>
+
+        <button onClick={saveNote} className="submit">Save</button>
+
       </header>
     </div>
   );
